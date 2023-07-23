@@ -1,11 +1,9 @@
 showOnReload();
 
 const form = document.getElementById("form");
-let keyId = 0;
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  keyId++;
 
   const expenseAmount = document.getElementById("amount");
   const description = document.getElementById("description");
@@ -18,6 +16,7 @@ form.addEventListener("submit", (e) => {
   ) {
     alert("All Fields are required");
   } else {
+    let keyId = new Date().getTime();
     const ExpenseObj = {
       expenseKey: `Key${keyId}`,
       expenseAmount: expenseAmount.value,
@@ -31,6 +30,7 @@ form.addEventListener("submit", (e) => {
     // expenseAmount.value == "";
     // description.value == "";
     // category.value == "";
+    // console.log(expenseAmount.value);
   }
 });
 
@@ -40,11 +40,11 @@ function showUserOnScreen(ExpenseObj) {
   const expense = document.createElement("li");
   expense.className = "expense mt-2";
 
-  expense.innerHTML = `<span class = "d-block"> ${ExpenseObj.expenseAmount} - ${ExpenseObj.description} - ${ExpenseObj.category} <span>`;
+  expense.innerHTML = `<span class = "d-block mb-2"> <span class = "fw-bold"> Amount:</span> ${ExpenseObj.expenseAmount} INR <br> <span class = "fw-bold"> Description:</span> ${ExpenseObj.description} <br> <span class = "fw-bold"> Category:</span> ${ExpenseObj.category} <span>`;
 
   //Adding Edit Btn
   let editBtn = document.createElement("button");
-  editBtn.className = "btn btn-success d-inline-block me-3";
+  editBtn.className = "btn btn-success d-inline-block me-3 mb-3";
   editBtn.appendChild(document.createTextNode("EDIT"));
   expense.appendChild(editBtn);
 
@@ -58,7 +58,7 @@ function showUserOnScreen(ExpenseObj) {
 
   //Adding delete Btn
   let deleteBtn = document.createElement("button");
-  deleteBtn.className = "btn btn-dark d-inline-block";
+  deleteBtn.className = "btn btn-dark d-inline-block mb-3";
   deleteBtn.appendChild(document.createTextNode("DELETE"));
 
   expense.append(deleteBtn);
