@@ -14,7 +14,7 @@ form.addEventListener("submit", (e) => {
     description.value == "" ||
     category.value == ""
   ) {
-    alert("All Fields are required");
+    // alert("All Fields are required");
   } else {
     let keyId = new Date().getTime();
     const ExpenseObj = {
@@ -52,6 +52,7 @@ function showUserOnScreen(ExpenseObj) {
     document.getElementById("category").value = ExpenseObj.category;
     document.getElementById("amount").focus();
     expenseList.removeChild(expense);
+    localStorage.removeItem(ExpenseObj.expenseKey);
   });
 
   //Adding delete Btn
