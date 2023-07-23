@@ -9,6 +9,7 @@ form.addEventListener("submit", (e) => {
   const description = document.getElementById("description");
   const category = document.getElementById("category");
 
+  //creating a unique ID for each Expense Obj
   let keyId = new Date().getTime();
   const ExpenseObj = {
     expenseKey: `Key${keyId}`,
@@ -17,9 +18,11 @@ form.addEventListener("submit", (e) => {
     category: category.value,
   };
 
+  // storing the details in the local storage with the unique key ID
   localStorage.setItem(`Key${keyId}`, JSON.stringify(ExpenseObj));
   showUserOnScreen(ExpenseObj);
 
+  // resetting the input fields after submission
   expenseAmount.value = "";
   description.value = "";
   category.value = "";
@@ -28,11 +31,12 @@ form.addEventListener("submit", (e) => {
 function showUserOnScreen(ExpenseObj) {
   const expenseList = document.getElementById("expenseList");
 
+  //creating a new li element
   const expense = document.createElement("li");
 
   expense.innerHTML = `<span class = "d-block mb-2 text-capitalize"> <span class = "fw-bold"> Amount:</span> ${ExpenseObj.expenseAmount} INR <br> <span class = "fw-bold"> Description:</span> ${ExpenseObj.description} <br> <span class = "fw-bold"> Category:</span> ${ExpenseObj.category} <span>`;
 
-  //Adding Edit Btn
+  //Adding Edit Btn to each li element
   let editBtn = document.createElement("button");
   editBtn.className = "btn btn-success d-inline-block me-3 mb-3";
   editBtn.appendChild(document.createTextNode("EDIT"));
@@ -47,12 +51,14 @@ function showUserOnScreen(ExpenseObj) {
     localStorage.removeItem(ExpenseObj.expenseKey);
   });
 
-  //Adding delete Btn
+  //Adding delete Btn to each li element
   let deleteBtn = document.createElement("button");
   deleteBtn.className = "btn btn-dark d-inline-block mb-3";
   deleteBtn.appendChild(document.createTextNode("DELETE"));
 
   expense.append(deleteBtn);
+
+  //Appening the li element to the ul element
   expenseList.append(expense);
 
   deleteBtn.addEventListener("click", () => {
