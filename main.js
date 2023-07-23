@@ -1,4 +1,5 @@
 showOnReload();
+// if (expenseList.childElementCount == 0) expenseList.classList.remove("p-2");
 
 const form = document.getElementById("form");
 
@@ -30,15 +31,17 @@ form.addEventListener("submit", (e) => {
 
 function showUserOnScreen(ExpenseObj) {
   const expenseList = document.getElementById("expenseList");
+  expenseList.classList.add("p-2");
 
   //creating a new li element
   const expense = document.createElement("li");
+  expense.className = "mb-4";
 
   expense.innerHTML = `<span class = "d-block mb-2 text-capitalize"> <span class = "fw-bold"> Amount:</span> ${ExpenseObj.expenseAmount} INR <br> <span class = "fw-bold"> Description:</span> ${ExpenseObj.description} <br> <span class = "fw-bold"> Category:</span> ${ExpenseObj.category} <span>`;
 
   //Adding Edit Btn to each li element
   let editBtn = document.createElement("button");
-  editBtn.className = "btn btn-success d-inline-block me-3 mb-3";
+  editBtn.className = "btn btn-success d-inline-block me-3 ";
   editBtn.appendChild(document.createTextNode("EDIT"));
   expense.appendChild(editBtn);
 
@@ -48,12 +51,13 @@ function showUserOnScreen(ExpenseObj) {
     document.getElementById("category").value = ExpenseObj.category;
     document.getElementById("amount").focus();
     expenseList.removeChild(expense);
+    if (expenseList.childElementCount == 0) expenseList.classList.remove("p-2");
     localStorage.removeItem(ExpenseObj.expenseKey);
   });
 
   //Adding delete Btn to each li element
   let deleteBtn = document.createElement("button");
-  deleteBtn.className = "btn btn-dark d-inline-block mb-3";
+  deleteBtn.className = "btn btn-dark d-inline-block ";
   deleteBtn.appendChild(document.createTextNode("DELETE"));
 
   expense.append(deleteBtn);
@@ -64,6 +68,7 @@ function showUserOnScreen(ExpenseObj) {
   deleteBtn.addEventListener("click", () => {
     localStorage.removeItem(ExpenseObj.expenseKey);
     expenseList.removeChild(expense);
+    if (expenseList.childElementCount == 0) expenseList.classList.remove("p-2");
   });
 }
 
