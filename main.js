@@ -35,7 +35,7 @@ function showUserOnScreen(ExpenseObj) {
 
   //creating a new li element
   const expense = document.createElement("li");
-  expense.className = "mb-4";
+  expense.className = "m-2 mb-4";
 
   expense.innerHTML = `<span class = "d-block mb-2 text-capitalize"> <span class = "fw-bold"> Amount:</span> ${ExpenseObj.expenseAmount} INR <br> <span class = "fw-bold"> Description:</span> ${ExpenseObj.description} <br> <span class = "fw-bold"> Category:</span> ${ExpenseObj.category} <span>`;
 
