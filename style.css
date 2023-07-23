@@ -1,0 +1,13 @@
+.container {
+  border-radius: 5px;
+  max-width: 400px !important;
+  background-color: #f4f4f4 !important;
+}
+
+.container input {
+  border-radius: 5px;
+  border: 1px solid #00000090;
+}
+.container label {
+  cursor: pointer;
+}
