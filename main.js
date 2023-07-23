@@ -9,28 +9,20 @@ form.addEventListener("submit", (e) => {
   const description = document.getElementById("description");
   const category = document.getElementById("category");
 
-  if (
-    expenseAmount.value == "" ||
-    description.value == "" ||
-    category.value == ""
-  ) {
-    // alert("All Fields are required");
-  } else {
-    let keyId = new Date().getTime();
-    const ExpenseObj = {
-      expenseKey: `Key${keyId}`,
-      expenseAmount: expenseAmount.value,
-      description: description.value,
-      category: category.value,
-    };
+  let keyId = new Date().getTime();
+  const ExpenseObj = {
+    expenseKey: `Key${keyId}`,
+    expenseAmount: expenseAmount.value,
+    description: description.value,
+    category: category.value,
+  };
 
-    localStorage.setItem(`Key${keyId}`, JSON.stringify(ExpenseObj));
-    showUserOnScreen(ExpenseObj);
+  localStorage.setItem(`Key${keyId}`, JSON.stringify(ExpenseObj));
+  showUserOnScreen(ExpenseObj);
 
-    expenseAmount.value = "";
-    description.value = "";
-    category.value = "";
-  }
+  expenseAmount.value = "";
+  description.value = "";
+  category.value = "";
 });
 
 function showUserOnScreen(ExpenseObj) {
