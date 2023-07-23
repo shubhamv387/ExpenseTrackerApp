@@ -38,7 +38,7 @@ function showUserOnScreen(ExpenseObj) {
 
   const expense = document.createElement("li");
 
-  expense.innerHTML = `<span class = "d-block mb-2"> <span class = "fw-bold"> Amount:</span> ${ExpenseObj.expenseAmount} INR <br> <span class = "fw-bold"> Description:</span> ${ExpenseObj.description} <br> <span class = "fw-bold"> Category:</span> ${ExpenseObj.category} <span>`;
+  expense.innerHTML = `<span class = "d-block mb-2 text-capitalize"> <span class = "fw-bold"> Amount:</span> ${ExpenseObj.expenseAmount} INR <br> <span class = "fw-bold"> Description:</span> ${ExpenseObj.description} <br> <span class = "fw-bold"> Category:</span> ${ExpenseObj.category} <span>`;
 
   //Adding Edit Btn
   let editBtn = document.createElement("button");
