@@ -27,10 +27,9 @@ form.addEventListener("submit", (e) => {
     localStorage.setItem(`Key${keyId}`, JSON.stringify(ExpenseObj));
     showUserOnScreen(ExpenseObj);
 
-    // expenseAmount.value == "";
-    // description.value == "";
-    // category.value == "";
-    // console.log(expenseAmount.value);
+    expenseAmount.value = "";
+    description.value = "";
+    category.value = "";
   }
 });
 
@@ -38,7 +37,6 @@ function showUserOnScreen(ExpenseObj) {
   const expenseList = document.getElementById("expenseList");
 
   const expense = document.createElement("li");
-  expense.className = "expense mt-2";
 
   expense.innerHTML = `<span class = "d-block mb-2"> <span class = "fw-bold"> Amount:</span> ${ExpenseObj.expenseAmount} INR <br> <span class = "fw-bold"> Description:</span> ${ExpenseObj.description} <br> <span class = "fw-bold"> Category:</span> ${ExpenseObj.category} <span>`;
 
